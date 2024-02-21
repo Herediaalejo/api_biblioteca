@@ -24,7 +24,6 @@ exports.getLibroById = async (req, res) => {
 exports.createLibro = async (req, res) => {
   try {
     const nuevoLibro = await Libro.create(req.body);
-    await nuevoLibro.save();
     res.status(201).json(nuevoLibro);
   } catch (error) {
     res.status(500).json({ error: "Error al crear el Libro" });

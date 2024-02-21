@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_DB, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_DB, 
+  { useNewUrlParser: true, 
+    useUnifiedTopology: true })
+    .then(() => console.log('Conexión exitosa a la base de datos'))
+    .catch(err => console.error('Error de conexión a la base de datos:', err));
 
 const LibroSchema = new mongoose.Schema({
   titulo: String,
